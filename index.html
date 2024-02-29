@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>30% Off Tesla Sale</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+
+      header {
+        height: 80px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 120;
+      }
+
+      header .logo {
+        float: left;
+        height: 100%;
+        padding-left: 10px;
+      }
+
+      header .nav {
+        float: right;
+        height: 100%;
+      }
+
+      header ul {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      header li {
+        list-style-type: none;
+        margin-left: 20px;
+      }
+      header li {
+        list-style-type: none;
+        margin-left: 20px;
+      }
+
+      header li:first-child {
+        margin-left: 0;
+      }
+
+      header li:last-child {
+        margin-right: 20px;
+      }
+      header li a {
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .sale-text {
+        font-family: "Arial Black", sans-serif;
+        font-size: 36px;
+        color: #ff6b6b;
+        margin-top: 120px;
+        animation: pulse 1s infinite alternate;
+      }
+
+      @keyframes pulse {
+        0% {
+          color: #ff6b6b;
+          transform: scale(1);
+        }
+        100% {
+          color: #ffcc5c;
+          transform: scale(1.1);
+        }
+      }
+
+      #tesla-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      #tesla-image {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 120px;
+        height: auto;
+      }
+
+      #price {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2ecc71;
+        margin-top: 20px;
+      }
+
+      #original-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 24px;
+        margin-bottom: 5px;
+      }
+
+      #discounted-price {
+        font-size: 48px;
+        color: #2ecc71;
+        margin-top: 5px;
+      }
+      .space {
+        height: 20px;
+        background-color: #f0f0f0;
+      }
+
+      #countdown {
+        font-size: 28px;
+        color: #333;
+        margin-top: 20px;
+        border: 2px solid #2ecc71;
+        border-radius: 5px;
+        padding: 15px 20px;
+        width: fit-content;
+        margin: 0 auto;
+        animation: countdown-animation 1s infinite alternate;
+      }
+
+      @keyframes countdown-animation {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.05);
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        h1 {
+          font-size: 28px;
+        }
+
+        #countdown {
+          font-size: 24px;
+        }
+      }
+      .buy-now-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #2ecc71;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        outline: none;
+        margin-bottom: 10px;
+      }
+
+      .buy-now-button:hover {
+        background-color: #27ae60;
+        transform: scale(1.05);
+      }
+      .content {
+        padding: 20px;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          class="logo"
+          src="car-steals-high-resolution-logo-transparent.png"
+          alt=""
+        />
+      </div>
+      <div class="nav">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="">About</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="space"></div>
+    <div class="sale-text">30% Off Sale!</div>
+    <div id="tesla-container">
+      <img src="tesla_image.jpg" alt="Tesla" id="tesla-image" />
+      <img class="icon" src="discount.png" alt="icon" />
+    </div>
+    <div id="price">
+      <p id="original-price">$250,000</p>
+      <p id="discounted-price">$175,000</p>
+    </div>
+    <div id="countdown"></div>
+    <div class="space"></div>
+    <button class="buy-now-button">Buy Now</button>
+    <script>
+      var targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 10);
+
+      var countdown = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = targetDate - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML =
+          "Time Left: " +
+          days +
+          "d " +
+          hours +
+          "h " +
+          minutes +
+          "m " +
+          seconds +
+          "s ";
+
+        if (distance < 0) {
+          clearInterval(countdown);
+          document.getElementById("countdown").innerHTML = "Sale has ended!";
+        }
+      }, 1000);
+    </script>
+    <footer>
+      <div class="footer-content">
+        <p>
+          &copy; Car Steals.
+          <span> </span>
+          All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
